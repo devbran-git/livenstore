@@ -6,20 +6,20 @@ import {NavigationProps} from 'navigator/routes.types';
 
 import styles from './styles';
 
-const Home: React.FC = () => {
+const Cart: React.FC = () => {
   const {navigate} = useNavigation<NavigationProps>();
 
-  const handleNavigateToCart = () => navigate('Cart');
+  const handleNavigateToHome = () => navigate('Home');
 
   return (
     <View style={styles.container}>
-      <Text>HOME</Text>
+      <Text>CART</Text>
 
-      <TouchableOpacity onPress={handleNavigateToCart}>
-        <Text style={styles.button}>Ir para o Carrinho</Text>
+      <TouchableOpacity onPress={handleNavigateToHome}>
+        <Text style={styles.button}>Ir para a Home</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
-export default Home;
+export default Cart;
