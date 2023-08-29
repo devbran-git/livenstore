@@ -8,7 +8,8 @@
       "@components/*": ["src/components/*"],
       "@screens/*": ["src/screens/*"],
       "@navigator/*": ["src/navigator/*"],
-      "@assets/*": ["src/assets/*"]
+      "@assets/*": ["src/assets/*"],
+      "@globals/*": ["src/globals/*"]
     }
   }
 }

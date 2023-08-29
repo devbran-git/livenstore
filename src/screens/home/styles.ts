@@ -1,3 +1,4 @@
+import {bold} from 'globals/styles/fonts';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
@@ -5,6 +6,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  title: {
+    fontFamily: bold,
+    fontSize: 20,
   },
   button: {
     flexDirection: 'row',

@@ -14,7 +14,7 @@ const Home: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text>HOME</Text>
+      <Text style={styles.title}>HOME</Text>
 
       <TouchableOpacity style={styles.button} onPress={handleNavigateToCart}>
         <IconSvg name="cart" width={16} height={16} />
