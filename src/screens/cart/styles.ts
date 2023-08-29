@@ -7,8 +7,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button: {
-    fontSize: 10,
-    color: 'blue',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 40,
   },
 });
 
