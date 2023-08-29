@@ -5,7 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from 'navigator/routes.types';
 
 import styles from './styles';
-import IconSvg from 'components/iconSvg';
+import IconSvg from 'components/iconSvg/iconSvg';
 
 const Cart: React.FC = () => {
   const {goBack} = useNavigation<NavigationProps>();

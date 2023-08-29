@@ -10,4 +10,4 @@ export interface IconProps {
   brand?: string;
 }
 
-export type IconsNameType = 'cart' | 'arrowBack';
+export type IconsNameType = 'cart' | 'arrowBack' | 'star';

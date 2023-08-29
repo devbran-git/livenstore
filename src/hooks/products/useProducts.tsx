@@ -37,7 +37,7 @@ const ProductsProvider = ({children}: ProductsProviderProps) => {
   };
 
   useEffect(() => {
-    fetchProducts();
+    // fetchProducts();
   }, []);
 
   return (
