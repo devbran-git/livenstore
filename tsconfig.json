@@ -9,7 +9,9 @@
       "@screens/*": ["src/screens/*"],
       "@navigator/*": ["src/navigator/*"],
       "@assets/*": ["src/assets/*"],
-      "@globals/*": ["src/globals/*"]
+      "@globals/*": ["src/globals/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@services/*": ["src/services/*"]
     }
   }
 }
