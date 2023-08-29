@@ -6,20 +6,20 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import IconSvg from 'components/iconSvg/iconSvg';
 
 import {useNavigation} from '@react-navigation/native';
+
+import ProductCard from 'components/productCard/productCard';
+import Cart from 'assets/svg/cart.svg';
 
 import {useProducts} from 'hooks/products/useProducts';
 import {useCart} from 'hooks/cart/useCart';
 
-import styles from './styles';
-
 import {NavigationProps} from 'navigator/routes.types';
 import {Product} from 'hooks/products/products.types';
 import {CartProduct} from 'hooks/cart/cart.types';
-import {colors} from 'globals/styles/colors';
-import ProductCard from 'components/productCard/productCard';
+
+import styles from './styles';
 
 const productsToDisplay = [
   {
@@ -89,7 +89,7 @@ const Home: React.FC = () => {
         <TouchableOpacity
           style={styles.cartButton}
           onPress={handleNavigateToCart}>
-          <IconSvg name="cart" width={16} height={16} />
+          <Cart />
         </TouchableOpacity>
       </View>
 

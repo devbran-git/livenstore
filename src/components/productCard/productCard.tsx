@@ -1,12 +1,30 @@
-import React from 'react';
-import {Image, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
 
+import AddCart from 'assets/svg/addCart.svg';
+import Star from 'assets/svg/star.svg';
+import Minus from 'assets/svg/minus.svg';
+import Plus from 'assets/svg/plus.svg';
+
+import {hitSlop} from 'globals/styles/spacing';
 import styles from './productCard.styles';
 
-import {ProductCardProps} from './productCard.types';
-import IconSvg from 'components/iconSvg/iconSvg';
+import {OperatorsProps, ProductCardProps} from './productCard.types';
 
 const ProductCard: React.FC<ProductCardProps> = ({product, index}) => {
+  const [productCount, setProductCount] = useState(1);
+
+  const handleProductCount = (operator: string) => {
+    const operators: OperatorsProps = {
+      minus: () => {
+        if (productCount > 1) setProductCount(productCount - 1);
+      },
+      plus: () => setProductCount(productCount + 1),
+    };
+
+    operators[operator]();
+  };
+
   const isEvenNumber = index % 2 === 0;
   return (
     <View style={[styles.container, {marginRight: isEvenNumber ? 8 : 0}]}>
@@ -26,7 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product, index}) => {
         <View style={styles.ratingSection}>
           <Text style={styles.ratingValue}>{product?.rating.rate}</Text>
 
-          <IconSvg name="star" width={12} height={12} />
+          <Star />
 
           <Text style={styles.ratingCount}>
             ({product?.rating.count} ratings)
@@ -34,6 +52,33 @@ const ProductCard: React.FC<ProductCardProps> = ({product, index}) => {
         </View>
 
         <Text style={styles.productPrice}>$ {product.price}</Text>
+
+        <View style={styles.bottomContent}>
+          <View style={styles.counter}>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              hitSlop={hitSlop}
+              onPress={() => handleProductCount('minus')}>
+              <Minus />
+            </TouchableOpacity>
+
+            <View style={styles.countDisplay}>
+              <Text style={styles.count}>{productCount}</Text>
+            </View>
+
+            <TouchableOpacity
+              activeOpacity={0.7}
+              hitSlop={hitSlop}
+              onPress={() => handleProductCount('plus')}>
+              <Plus />
+            </TouchableOpacity>
+          </View>
+
+          <TouchableOpacity activeOpacity={0.7} style={styles.addButton}>
+            <AddCart />
+            <Text style={styles.addButtonTitle}>Adicionar</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

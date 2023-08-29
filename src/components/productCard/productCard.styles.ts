@@ -53,6 +53,37 @@ const styles = StyleSheet.create({
     marginTop: dynamicHeight(12),
     color: colors.black,
   },
+  bottomContent: {},
+  counter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: dynamicWidth(12),
+    alignSelf: 'center',
+    marginVertical: dynamicHeight(16),
+  },
+  countDisplay: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 2,
+    width: dynamicWidth(40),
+    height: dynamicHeight(18),
+    borderRadius: 4,
+    backgroundColor: colors.white,
+  },
+  count: {
+    fontFamily: semibold,
+    fontSize: 12,
+  },
+  addButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: dynamicWidth(8),
+    alignSelf: 'center',
+  },
+  addButtonTitle: {
+    fontFamily: semibold,
+    fontSize: 14,
+  },
 });
 
 export default styles;

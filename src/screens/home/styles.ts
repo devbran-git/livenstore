@@ -27,12 +27,12 @@ const styles = StyleSheet.create({
   },
   cartButton: {},
   productListContainer: {
-    flexGrow: 1,
+    flex: 1,
     alignItems: 'center',
   },
   productList: {
     flexGrow: 1,
-    paddingTop: dynamicHeight(24),
+    paddingVertical: dynamicHeight(24),
   },
   listSeparator: {
     height: dynamicHeight(24),
