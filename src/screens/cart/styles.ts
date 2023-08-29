@@ -1,4 +1,6 @@
+import {colors} from 'globals/styles/colors';
 import {bold} from 'globals/styles/fonts';
+import {dynamicHeight} from 'globals/styles/spacing';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
@@ -6,16 +8,18 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: colors.white,
   },
   title: {
     fontFamily: bold,
-    fontSize: 20,
+    color: colors.black,
+    fontSize: dynamicHeight(20),
   },
   button: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: 40,
+    marginTop: dynamicHeight(40),
   },
 });
 

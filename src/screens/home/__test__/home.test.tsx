@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from '@testing-library/react-native';
-import Home from '../index';
+import Home from 'screens/home';
 
 describe('Home test', () => {
   it('renderize text', () => {
