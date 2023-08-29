@@ -5,7 +5,7 @@ import React, {
   useContext,
   createContext,
 } from 'react';
-import {Products} from './products.types';
+import {Product} from './products.types';
 import {api} from 'services/api';
 
 interface ProductsProviderProps {
@@ -13,14 +13,14 @@ interface ProductsProviderProps {
 }
 
 export interface ProductsContextProps {
-  products: Products[];
+  products: Product[];
   isLoading: boolean;
 }
 
 const ProductsContext = createContext({} as ProductsContextProps);
 
 const ProductsProvider = ({children}: ProductsProviderProps) => {
-  const [products, setProducts] = useState<Products[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchProducts = async () => {
@@ -30,7 +30,7 @@ const ProductsProvider = ({children}: ProductsProviderProps) => {
 
       setProducts(response.data);
     } catch (error) {
-      console.log('Ocorreu um erro:', error);
+      console.log('Error:', error);
     } finally {
       setIsLoading(false);
     }
