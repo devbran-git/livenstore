@@ -1,6 +1,6 @@
 name: Push and forks tests
 
-on: [push, fork]
+on: [fork]
 jobs:
   publish:
     name: Branch test

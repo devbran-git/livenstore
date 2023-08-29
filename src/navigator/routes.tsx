@@ -1,4 +1,8 @@
-import {createStackNavigator} from '@react-navigation/stack';
+import {
+  CardStyleInterpolators,
+  TransitionSpecs,
+  createStackNavigator,
+} from '@react-navigation/stack';
 
 import Cart from 'screens/cart';
 import Home from 'screens/home';
@@ -7,7 +11,11 @@ import {StackTypesList} from './routes.types';
 const Stack = createStackNavigator<StackTypesList>();
 
 const optionsDefault = {
-  options: {headerShown: false, gestureEnabled: false},
+  options: {
+    headerShown: false,
+    gestureEnabled: false,
+    animationEnabled: false,
+  },
 };
 
 const MainStack = () => {

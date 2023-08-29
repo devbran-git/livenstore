@@ -5,18 +5,19 @@ import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from 'navigator/routes.types';
 
 import styles from './styles';
+import IconSvg from 'components/iconSvg';
 
 const Cart: React.FC = () => {
-  const {navigate} = useNavigation<NavigationProps>();
+  const {goBack} = useNavigation<NavigationProps>();
 
-  const handleNavigateToHome = () => navigate('Home');
+  const handleNavigateToHome = () => goBack();
 
   return (
     <View style={styles.container}>
-      <Text>CART</Text>
+      <Text style={styles.title}>CART</Text>
 
-      <TouchableOpacity onPress={handleNavigateToHome}>
-        <Text style={styles.button}>Ir para a Home</Text>
+      <TouchableOpacity style={styles.button} onPress={handleNavigateToHome}>
+        <IconSvg name="arrowBack" width={16} height={16} />
       </TouchableOpacity>
     </View>
   );

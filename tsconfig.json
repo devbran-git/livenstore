@@ -7,7 +7,9 @@
       "tests": ["tests/*"],
       "@components/*": ["src/components/*"],
       "@screens/*": ["src/screens/*"],
-      "@navigator/*": ["src/navigator/*"]
+      "@navigator/*": ["src/navigator/*"],
+      "@assets/*": ["src/assets/*"],
+      "@globals/*": ["src/globals/*"]
     }
   }
 }
