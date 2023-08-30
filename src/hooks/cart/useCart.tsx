@@ -1,13 +1,12 @@
 import React, {
   useState,
   ReactNode,
+  useEffect,
   useContext,
   createContext,
-  useEffect,
 } from 'react';
 
 import {CartType, CartProduct} from './cart.types';
-import {Product} from 'hooks/products/products.types';
 
 interface CartProviderProps {
   children: ReactNode;
@@ -16,7 +15,7 @@ interface CartProviderProps {
 export interface CartContextProps {
   cart: CartType;
   updateCart: (newProduct: CartProduct) => void;
-  removeProductFromCart: (product: Product) => void;
+  removeProductFromCart: (productId: number) => void;
 }
 
 const CartContext = createContext({} as CartContextProps);
@@ -34,11 +33,11 @@ const CartProvider = ({children}: CartProviderProps) => {
     setCart(cartToUpdate);
   };
 
-  const removeProductFromCart = (product: Product) => {
+  const removeProductFromCart = (productId: number) => {
     const cartToUpdate = [...cart];
 
     const productToRemove = cart.findIndex(
-      cartProduct => cartProduct.id === product.id,
+      cartProduct => cartProduct.id === productId,
     );
 
     if (productToRemove > -1) {

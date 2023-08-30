@@ -1,25 +1,41 @@
 import {colors} from 'globals/styles/colors';
-import {bold} from 'globals/styles/fonts';
-import {dynamicHeight} from 'globals/styles/spacing';
+import {medium} from 'globals/styles/fonts';
+import {dynamicHeight, dynamicWidth} from 'globals/styles/spacing';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    // backgroundColor: colors.white,
+    backgroundColor: colors.white,
   },
-  title: {
-    fontFamily: bold,
-    color: colors.black,
-    fontSize: dynamicHeight(20),
-  },
-  button: {
+  header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: dynamicHeight(40),
+    height: dynamicHeight(48),
+    borderBottomColor: colors.black,
+    borderBottomWidth: dynamicHeight(1),
+    paddingHorizontal: dynamicWidth(24),
+  },
+  ghostView: {
+    width: 16,
+  },
+  headerTitle: {
+    fontFamily: medium,
+    fontSize: 16,
+    color: colors.black,
+  },
+  cartButton: {},
+  productListContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  productList: {
+    flexGrow: 1,
+    paddingVertical: dynamicHeight(24),
+  },
+  listSeparator: {
+    height: dynamicHeight(24),
   },
 });
 
