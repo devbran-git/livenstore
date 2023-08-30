@@ -1,25 +1,28 @@
 import {colors} from 'globals/styles/colors';
-import {bold} from 'globals/styles/fonts';
-import {dynamicHeight} from 'globals/styles/spacing';
+import {bold, medium} from 'globals/styles/fonts';
+import {dynamicHeight, dynamicWidth, width} from 'globals/styles/spacing';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: colors.white,
   },
-  title: {
-    fontFamily: bold,
-    color: colors.black,
-    fontSize: dynamicHeight(20),
-  },
-  button: {
+  header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: dynamicHeight(40),
+    width: width,
+    paddingHorizontal: dynamicWidth(24),
+    marginTop: dynamicHeight(24),
+  },
+  backButton: {},
+  headerTitle: {
+    fontFamily: medium,
+    fontSize: 16,
+  },
+  ghostView: {
+    width: 16,
   },
 });
 

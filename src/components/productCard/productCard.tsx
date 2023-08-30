@@ -94,7 +94,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
               style={styles.addRemoveButton}
               onPress={handleRemoveProduct}>
               <Trash />
-              <Text style={styles.addRemoveButtonTitle}>Remover</Text>
+              <Text style={styles.addRemoveButtonTitle}>Remove</Text>
             </TouchableOpacity>
           ) : (
             <>
@@ -122,7 +122,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 style={styles.addRemoveButton}
                 onPress={handleAddProduct}>
                 <AddCart />
-                <Text style={styles.addRemoveButtonTitle}>Adicionar</Text>
+                <Text style={styles.addRemoveButtonTitle}>Add to cart</Text>
               </TouchableOpacity>
             </>
           )}

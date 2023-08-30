@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
   addRemoveButton: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     gap: dynamicWidth(8),
     alignSelf: 'center',
     width: dynamicWidth(225),

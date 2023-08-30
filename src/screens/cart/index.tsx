@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from 'navigator/routes.types';
@@ -14,13 +14,17 @@ const Cart: React.FC = () => {
   const handleNavigateToHome = () => goBack();
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>CART</Text>
-
-      <TouchableOpacity style={styles.button} onPress={handleNavigateToHome}>
-        <ArrowBack />
-      </TouchableOpacity>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={handleNavigateToHome}>
+          <ArrowBack width={16} height={16} />
+        </TouchableOpacity>
+        <Text style={styles.headerTitle}>Cart</Text>
+        <View style={styles.ghostView} />
+      </View>
+    </SafeAreaView>
   );
 };
 
