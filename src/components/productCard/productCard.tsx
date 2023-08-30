@@ -11,7 +11,11 @@ import styles from './productCard.styles';
 
 import {OperatorsProps, ProductCardProps} from './productCard.types';
 
-const ProductCard: React.FC<ProductCardProps> = ({product, index}) => {
+const ProductCard: React.FC<ProductCardProps> = ({
+  index,
+  product,
+  handleOpenModal,
+}) => {
   const [productCount, setProductCount] = useState(1);
 
   const handleProductCount = (operator: string) => {
@@ -28,13 +32,16 @@ const ProductCard: React.FC<ProductCardProps> = ({product, index}) => {
   const isEvenNumber = index % 2 === 0;
   return (
     <View style={[styles.container, {marginRight: isEvenNumber ? 8 : 0}]}>
-      <View style={styles.backgroundToImage}>
+      <TouchableOpacity
+        style={styles.backgroundToImage}
+        activeOpacity={0.7}
+        onPress={() => handleOpenModal(product.id)}>
         <Image
           style={styles.image}
           source={{uri: product?.image}}
           resizeMode="contain"
         />
-      </View>
+      </TouchableOpacity>
 
       <View style={styles.contentInfo}>
         <Text style={styles.productTitle} numberOfLines={2}>

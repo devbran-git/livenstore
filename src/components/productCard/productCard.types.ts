@@ -1,8 +1,9 @@
 import {Product} from 'hooks/products/products.types';
 
 export interface ProductCardProps {
-  product: Product;
   index: number;
+  product: Product;
+  handleOpenModal: (productId: number) => void;
 }
 
 export interface OperatorsProps {

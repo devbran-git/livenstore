@@ -1,6 +1,7 @@
 import React, {useMemo, useState} from 'react';
 import {
   FlatList,
+  Modal,
   SafeAreaView,
   Text,
   TouchableOpacity,
@@ -20,6 +21,7 @@ import {Product} from 'hooks/products/products.types';
 import {CartProduct} from 'hooks/cart/cart.types';
 
 import styles from './styles';
+import ProductModal from 'components/productModal/productModal';
 
 const productsToDisplay = [
   {
@@ -62,6 +64,19 @@ const Home: React.FC = () => {
   const {cart, updateCart, removeProductFromCart} = useCart();
 
   const [productCount, setProductCount] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<Product>();
+
+  const handleCloseModal = () => setIsModalOpen(false);
+
+  const handleOpenModal = (productId: number) => {
+    const clickedProduct = productsToDisplay.find(
+      product => product?.id === productId,
+    );
+
+    setSelectedProduct(clickedProduct);
+    setIsModalOpen(true);
+  };
 
   // const productsToDisplay = useMemo(() => products, [products]);
 
@@ -81,32 +96,44 @@ const Home: React.FC = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.ghostView} />
-        <Text style={styles.headerTitle}>Liven Store</Text>
+    <>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <View style={styles.ghostView} />
+          <Text style={styles.headerTitle}>Liven Store</Text>
 
-        <TouchableOpacity
-          style={styles.cartButton}
-          onPress={handleNavigateToCart}>
-          <Cart />
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity
+            style={styles.cartButton}
+            onPress={handleNavigateToCart}>
+            <Cart />
+          </TouchableOpacity>
+        </View>
 
-      <View style={styles.productListContainer}>
-        <FlatList
-          data={productsToDisplay}
-          contentContainerStyle={styles.productList}
-          keyExtractor={item => String(item?.id)}
-          renderItem={({item, index}) => (
-            <ProductCard product={item} index={index} />
-          )}
-          numColumns={2}
-          ItemSeparatorComponent={() => <View style={styles.listSeparator} />}
-          showsVerticalScrollIndicator={false}
-        />
-      </View>
-    </SafeAreaView>
+        <View style={styles.productListContainer}>
+          <FlatList
+            data={productsToDisplay}
+            contentContainerStyle={styles.productList}
+            keyExtractor={item => String(item?.id)}
+            renderItem={({item, index}) => (
+              <ProductCard
+                product={item}
+                index={index}
+                handleOpenModal={handleOpenModal}
+              />
+            )}
+            numColumns={2}
+            ItemSeparatorComponent={() => <View style={styles.listSeparator} />}
+            showsVerticalScrollIndicator={false}
+          />
+        </View>
+      </SafeAreaView>
+
+      <ProductModal
+        isModalOpen={isModalOpen}
+        handleCloseModal={handleCloseModal}
+        selectedProduct={selectedProduct}
+      />
+    </>
   );
 };
 

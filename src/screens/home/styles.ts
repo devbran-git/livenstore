@@ -1,5 +1,5 @@
 import {colors} from 'globals/styles/colors';
-import {bold, medium} from 'globals/styles/fonts';
+import {medium} from 'globals/styles/fonts';
 import {dynamicHeight, dynamicWidth} from 'globals/styles/spacing';
 import {StyleSheet} from 'react-native';
 
