@@ -1,23 +1,33 @@
 import React, {useState} from 'react';
 import {Image, Modal, Text, TouchableOpacity, View} from 'react-native';
 
+import {useFocusEffect} from '@react-navigation/native';
+
+import {useCart} from 'hooks/cart/useCart';
+
 import AddCart from 'assets/svg/addCart.svg';
 import Star from 'assets/svg/star.svg';
 import Minus from 'assets/svg/minus.svg';
 import Plus from 'assets/svg/plus.svg';
+import Trash from 'assets/svg/trash.svg';
 
 import {hitSlop} from 'globals/styles/spacing';
 import styles from './productModal.styles';
 
 import {ProductModalProps} from './productModal.types';
 import {OperatorsProps} from 'components/productCard/productCard.types';
+import {Product} from 'hooks/products/products.types';
 
 const ProductModal: React.FC<ProductModalProps> = ({
   isModalOpen,
   selectedProduct,
+  handleAddProductsToCart,
   handleCloseModal,
 }) => {
+  const {cart, removeProductFromCart} = useCart();
+
   const [productCount, setProductCount] = useState(1);
+  const [productInCart, setProductInCart] = useState({} as Product);
 
   const handleProductCount = (operator: string) => {
     const operators: OperatorsProps = {
@@ -29,6 +39,21 @@ const ProductModal: React.FC<ProductModalProps> = ({
 
     operators[operator]();
   };
+
+  const handleAddProduct = () =>
+    handleAddProductsToCart(selectedProduct as Product, productCount);
+
+  const handleRemoveProduct = () => {
+    removeProductFromCart(Number(selectedProduct?.id));
+    setProductCount(1);
+  };
+
+  useFocusEffect(() => {
+    const identifiedProduct = cart.find(i => i.id === selectedProduct?.id);
+
+    setProductInCart(identifiedProduct as Product);
+  });
+
   return (
     <Modal transparent visible={isModalOpen} onRequestClose={handleCloseModal}>
       <View style={styles.modalContent}>
@@ -65,28 +90,47 @@ const ProductModal: React.FC<ProductModalProps> = ({
           </View>
 
           <View style={styles.counterContainer}>
-            <View style={styles.counter}>
+            {productInCart?.id === selectedProduct?.id ? (
               <TouchableOpacity
                 activeOpacity={0.7}
-                hitSlop={hitSlop}
-                onPress={() => handleProductCount('minus')}>
-                <Minus width={16} height={16} />
+                style={styles.addRemoveButton}
+                onPress={handleRemoveProduct}>
+                <Trash />
+                <Text style={styles.addRemoveButtonTitle}>
+                  Remover do carrinho
+                </Text>
               </TouchableOpacity>
-              <View style={styles.countDisplay}>
-                <Text style={styles.count}>{productCount}</Text>
-              </View>
-              <TouchableOpacity
-                activeOpacity={0.7}
-                hitSlop={hitSlop}
-                onPress={() => handleProductCount('plus')}>
-                <Plus width={16} height={16} />
-              </TouchableOpacity>
-            </View>
+            ) : (
+              <>
+                <View style={styles.counter}>
+                  <TouchableOpacity
+                    activeOpacity={0.7}
+                    hitSlop={hitSlop}
+                    onPress={() => handleProductCount('minus')}>
+                    <Minus width={16} height={16} />
+                  </TouchableOpacity>
+                  <View style={styles.countDisplay}>
+                    <Text style={styles.count}>{productCount}</Text>
+                  </View>
+                  <TouchableOpacity
+                    activeOpacity={0.7}
+                    hitSlop={hitSlop}
+                    onPress={() => handleProductCount('plus')}>
+                    <Plus width={16} height={16} />
+                  </TouchableOpacity>
+                </View>
 
-            <TouchableOpacity activeOpacity={0.7} style={styles.addButton}>
-              <AddCart />
-              <Text style={styles.addButtonTitle}>Adicionar ao carrinho</Text>
-            </TouchableOpacity>
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  style={styles.addRemoveButton}
+                  onPress={handleAddProduct}>
+                  <AddCart />
+                  <Text style={styles.addRemoveButtonTitle}>
+                    Adicionar ao carrinho
+                  </Text>
+                </TouchableOpacity>
+              </>
+            )}
 
             <TouchableOpacity
               activeOpacity={0.7}

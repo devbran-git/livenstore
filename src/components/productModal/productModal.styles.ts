@@ -22,8 +22,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     width: width,
-    height: '75%',
-    paddingBottom: dynamicHeight(24),
+    height: '85%',
     borderRadius: dynamicHeight(24),
     backgroundColor: colors.smoke,
     overflow: 'hidden',
@@ -47,6 +46,7 @@ const styles = StyleSheet.create({
     paddingBottom: dynamicHeight(40),
   },
   titleContainer: {
+    flex: 1,
     gap: dynamicHeight(16),
   },
   productTitle: {
@@ -116,21 +116,24 @@ const styles = StyleSheet.create({
   count: {
     fontFamily: semibold,
     fontSize: 18,
+    color: colors.black,
   },
-  addButton: {
+  addRemoveButton: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: dynamicWidth(8),
     alignSelf: 'center',
+    width: dynamicWidth(225),
     paddingVertical: dynamicHeight(12),
     paddingHorizontal: dynamicHeight(24),
     borderWidth: dynamicWidth(2),
     borderColor: colors.black,
     borderRadius: dynamicHeight(4),
   },
-  addButtonTitle: {
+  addRemoveButtonTitle: {
     fontFamily: semibold,
     fontSize: 14,
+    color: colors.black,
   },
   closeModalButton: {
     alignItems: 'center',
@@ -141,6 +144,7 @@ const styles = StyleSheet.create({
   closeModalButtonTitle: {
     fontFamily: medium,
     fontSize: 14,
+    color: colors.black,
   },
 });
 

@@ -1,11 +1,10 @@
-import React, {useMemo, useState} from 'react';
+import React, {useState} from 'react';
 import {
-  FlatList,
-  Modal,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
   View,
+  Text,
+  FlatList,
+  SafeAreaView,
+  TouchableOpacity,
 } from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
@@ -63,9 +62,10 @@ const Home: React.FC = () => {
   const {products, isLoading} = useProducts();
   const {cart, updateCart, removeProductFromCart} = useCart();
 
-  const [productCount, setProductCount] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product>();
+
+  const handleNavigateToCart = () => navigate('Cart');
 
   const handleCloseModal = () => setIsModalOpen(false);
 
@@ -80,9 +80,7 @@ const Home: React.FC = () => {
 
   // const productsToDisplay = useMemo(() => products, [products]);
 
-  const handleNavigateToCart = () => navigate('Cart');
-
-  const handleAddProductsToCart = (product: Product) => {
+  const handleAddProductsToCart = (product: Product, productCount: number) => {
     const productIsInCart = cart.find(
       cartProduct => cartProduct.id === product.id,
     );
@@ -116,8 +114,9 @@ const Home: React.FC = () => {
             keyExtractor={item => String(item?.id)}
             renderItem={({item, index}) => (
               <ProductCard
-                product={item}
                 index={index}
+                product={item}
+                handleAddProductsToCart={handleAddProductsToCart}
                 handleOpenModal={handleOpenModal}
               />
             )}
@@ -130,8 +129,9 @@ const Home: React.FC = () => {
 
       <ProductModal
         isModalOpen={isModalOpen}
-        handleCloseModal={handleCloseModal}
         selectedProduct={selectedProduct}
+        handleAddProductsToCart={handleAddProductsToCart}
+        handleCloseModal={handleCloseModal}
       />
     </>
   );

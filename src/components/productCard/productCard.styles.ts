@@ -1,7 +1,8 @@
-import {colors} from 'globals/styles/colors';
-import {bold, regular, semibold} from 'globals/styles/fonts';
-import {dynamicHeight, dynamicWidth} from 'globals/styles/spacing';
 import {StyleSheet} from 'react-native';
+
+import {dynamicHeight, dynamicWidth} from 'globals/styles/spacing';
+import {bold, regular, semibold} from 'globals/styles/fonts';
+import {colors} from 'globals/styles/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,9 +23,14 @@ const styles = StyleSheet.create({
     height: dynamicHeight(152),
   },
   contentInfo: {
+    flex: 1,
+    justifyContent: 'space-between',
     paddingTop: dynamicHeight(12),
     paddingHorizontal: dynamicWidth(8),
     paddingBottom: dynamicHeight(16),
+  },
+  topContent: {
+    flex: 1,
   },
   productTitle: {
     fontFamily: semibold,
@@ -73,16 +79,18 @@ const styles = StyleSheet.create({
   count: {
     fontFamily: semibold,
     fontSize: 12,
+    color: colors.black,
   },
-  addButton: {
+  addRemoveButton: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: dynamicWidth(8),
     alignSelf: 'center',
   },
-  addButtonTitle: {
+  addRemoveButtonTitle: {
     fontFamily: semibold,
     fontSize: 14,
+    color: colors.black,
   },
 });
 

@@ -1,22 +1,31 @@
 import React, {useState} from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {useFocusEffect} from '@react-navigation/native';
+
+import {useCart} from 'hooks/cart/useCart';
 
 import AddCart from 'assets/svg/addCart.svg';
 import Star from 'assets/svg/star.svg';
 import Minus from 'assets/svg/minus.svg';
 import Plus from 'assets/svg/plus.svg';
+import Trash from 'assets/svg/trash.svg';
 
 import {hitSlop} from 'globals/styles/spacing';
 import styles from './productCard.styles';
 
 import {OperatorsProps, ProductCardProps} from './productCard.types';
+import {Product} from 'hooks/products/products.types';
 
 const ProductCard: React.FC<ProductCardProps> = ({
   index,
   product,
+  handleAddProductsToCart,
   handleOpenModal,
 }) => {
+  const {cart, removeProductFromCart} = useCart();
+
   const [productCount, setProductCount] = useState(1);
+  const [productInCart, setProductInCart] = useState({} as Product);
 
   const handleProductCount = (operator: string) => {
     const operators: OperatorsProps = {
@@ -29,7 +38,23 @@ const ProductCard: React.FC<ProductCardProps> = ({
     operators[operator]();
   };
 
+  const handleAddProduct = () => {
+    handleAddProductsToCart(product, productCount);
+  };
+
+  const handleRemoveProduct = () => {
+    removeProductFromCart(product.id);
+    setProductCount(1);
+  };
+
   const isEvenNumber = index % 2 === 0;
+
+  useFocusEffect(() => {
+    const identifiedProduct = cart.find(i => i.id === product.id);
+
+    setProductInCart(identifiedProduct as Product);
+  });
+
   return (
     <View style={[styles.container, {marginRight: isEvenNumber ? 8 : 0}]}>
       <TouchableOpacity
@@ -44,47 +69,63 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </TouchableOpacity>
 
       <View style={styles.contentInfo}>
-        <Text style={styles.productTitle} numberOfLines={2}>
-          {product?.title}
-        </Text>
-
-        <View style={styles.ratingSection}>
-          <Text style={styles.ratingValue}>{product?.rating.rate}</Text>
-
-          <Star />
-
-          <Text style={styles.ratingCount}>
-            ({product?.rating.count} ratings)
+        <View style={styles.topContent}>
+          <Text style={styles.productTitle} numberOfLines={2}>
+            {product?.title}
           </Text>
-        </View>
 
-        <Text style={styles.productPrice}>$ {product.price}</Text>
+          <View style={styles.ratingSection}>
+            <Text style={styles.ratingValue}>{product?.rating.rate}</Text>
 
-        <View style={styles.bottomContent}>
-          <View style={styles.counter}>
-            <TouchableOpacity
-              activeOpacity={0.7}
-              hitSlop={hitSlop}
-              onPress={() => handleProductCount('minus')}>
-              <Minus />
-            </TouchableOpacity>
+            <Star />
 
-            <View style={styles.countDisplay}>
-              <Text style={styles.count}>{productCount}</Text>
-            </View>
-
-            <TouchableOpacity
-              activeOpacity={0.7}
-              hitSlop={hitSlop}
-              onPress={() => handleProductCount('plus')}>
-              <Plus />
-            </TouchableOpacity>
+            <Text style={styles.ratingCount}>
+              ({product?.rating.count} ratings)
+            </Text>
           </View>
 
-          <TouchableOpacity activeOpacity={0.7} style={styles.addButton}>
-            <AddCart />
-            <Text style={styles.addButtonTitle}>Adicionar</Text>
-          </TouchableOpacity>
+          <Text style={styles.productPrice}>$ {product.price}</Text>
+        </View>
+
+        <View style={styles.bottomContent}>
+          {productInCart?.id === product.id ? (
+            <TouchableOpacity
+              activeOpacity={0.7}
+              style={styles.addRemoveButton}
+              onPress={handleRemoveProduct}>
+              <Trash />
+              <Text style={styles.addRemoveButtonTitle}>Remover</Text>
+            </TouchableOpacity>
+          ) : (
+            <>
+              <View style={styles.counter}>
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  hitSlop={hitSlop}
+                  onPress={() => handleProductCount('minus')}>
+                  <Minus />
+                </TouchableOpacity>
+
+                <View style={styles.countDisplay}>
+                  <Text style={styles.count}>{productCount}</Text>
+                </View>
+
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  hitSlop={hitSlop}
+                  onPress={() => handleProductCount('plus')}>
+                  <Plus />
+                </TouchableOpacity>
+              </View>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                style={styles.addRemoveButton}
+                onPress={handleAddProduct}>
+                <AddCart />
+                <Text style={styles.addRemoveButtonTitle}>Adicionar</Text>
+              </TouchableOpacity>
+            </>
+          )}
         </View>
       </View>
     </View>
