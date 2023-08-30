@@ -15,6 +15,7 @@ interface CartProviderProps {
 export interface CartContextProps {
   cart: CartType;
   updateCart: (newProduct: CartProduct) => void;
+  resetCart: () => void;
   removeProductFromCart: (productId: number) => void;
 }
 
@@ -31,6 +32,10 @@ const CartProvider = ({children}: CartProviderProps) => {
     cartToUpdate.push(productToCart);
 
     setCart(cartToUpdate);
+  };
+
+  const resetCart = () => {
+    setCart([]);
   };
 
   const removeProductFromCart = (productId: number) => {
@@ -52,7 +57,8 @@ const CartProvider = ({children}: CartProviderProps) => {
   }, [cart]);
 
   return (
-    <CartContext.Provider value={{cart, updateCart, removeProductFromCart}}>
+    <CartContext.Provider
+      value={{cart, updateCart, resetCart, removeProductFromCart}}>
       {children}
     </CartContext.Provider>
   );
