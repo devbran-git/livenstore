@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
-import {useFocusEffect} from '@react-navigation/native';
 
 import {useCart} from 'hooks/cart/useCart';
 
@@ -15,16 +14,22 @@ import {ResumeCardProps} from './resumeCard.types';
 import {OperatorsProps} from 'components/productCard/productCard.types';
 
 const ResumeCard: React.FC<ResumeCardProps> = ({product}) => {
-  const {cart, removeProductFromCart} = useCart();
+  const {cart, updateCart, removeProductFromCart} = useCart();
 
   const [productCount, setProductCount] = useState(product.productCount);
 
   const handleProductCount = (operator: string) => {
     const operators: OperatorsProps = {
       minus: () => {
-        if (productCount > 1) setProductCount(productCount - 1);
+        if (productCount > 1) {
+          setProductCount(productCount - 1);
+          handleUpdateCart(productCount - 1);
+        }
       },
-      plus: () => setProductCount(productCount + 1),
+      plus: () => {
+        setProductCount(productCount + 1);
+        handleUpdateCart(productCount + 1);
+      },
     };
 
     operators[operator]();
@@ -32,6 +37,16 @@ const ResumeCard: React.FC<ResumeCardProps> = ({product}) => {
 
   const handleRemoveProduct = () => {
     removeProductFromCart(product.id);
+  };
+
+  const handleUpdateCart = (count: number) => {
+    const productUpdated = {
+      ...product,
+      productCount: count,
+      subtotal: count * product.price,
+    };
+
+    updateCart(productUpdated);
   };
 
   return (

@@ -4,4 +4,5 @@ export type CartType = CartProduct[];
 
 export interface CartProduct extends Product {
   productCount: number;
+  subtotal?: number;
 }

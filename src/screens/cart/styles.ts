@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     color: colors.black,
   },
   confirmToast: {
+    zIndex: 1,
     position: 'absolute',
     top: dynamicHeight(24),
     alignItems: 'center',
@@ -79,6 +80,54 @@ const styles = StyleSheet.create({
   },
   listSeparator: {
     height: dynamicHeight(20),
+  },
+  totalContainer: {
+    position: 'absolute',
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: width,
+    backgroundColor: colors.smoke,
+    paddingTop: dynamicHeight(24),
+    paddingBottom: dynamicHeight(40),
+  },
+  totalInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: dynamicWidth(8),
+  },
+  totalLabel: {
+    fontFamily: medium,
+    fontSize: 16,
+    color: colors.black,
+  },
+  totalAmount: {
+    fontFamily: semibold,
+    fontSize: 18,
+    color: colors.black,
+  },
+  finalizeButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: dynamicWidth(200),
+    paddingVertical: dynamicHeight(12),
+    paddingHorizontal: dynamicHeight(40),
+    borderWidth: dynamicWidth(2),
+    borderColor: colors.black,
+    borderRadius: dynamicHeight(4),
+    marginTop: dynamicHeight(24),
+    marginBottom: dynamicHeight(16),
+  },
+  finalizeButtonText: {
+    fontFamily: semibold,
+    fontSize: 14,
+    color: colors.black,
+  },
+  backToStoreButton: {},
+  backToStoreButtonText: {
+    fontFamily: regular,
+    fontSize: 14,
+    color: colors.black,
   },
 });
 

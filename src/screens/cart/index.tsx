@@ -1,45 +1,31 @@
 import React, {useState} from 'react';
 import {
+  Text,
+  View,
   FlatList,
   SafeAreaView,
-  Text,
   TouchableOpacity,
-  View,
 } from 'react-native';
-
 import {useNavigation} from '@react-navigation/native';
-import {NavigationProps} from 'navigator/routes.types';
 
+import ResumeCard from 'components/resumeCard/resumeCard';
 import ArrowBack from 'assets/svg/arrowBack.svg';
 import Trash from 'assets/svg/trash.svg';
 
-import styles from './styles';
 import {useCart} from 'hooks/cart/useCart';
-import ResumeCard from 'components/resumeCard/resumeCard';
-import {Product} from 'hooks/products/products.types';
-import {CartProduct} from 'hooks/cart/cart.types';
+
+import styles from './styles';
+
+import {NavigationProps} from 'navigator/routes.types';
 
 const Cart: React.FC = () => {
   const {goBack} = useNavigation<NavigationProps>();
 
-  const {cart, resetCart, updateCart} = useCart();
+  const {cart, cartTotal, resetCart} = useCart();
 
   const [isToastVisible, setIsToastVisible] = useState(false);
 
   const handleNavigateToHome = () => goBack();
-
-  const handleAddProductsToCart = (product: Product, productCount: number) => {
-    const productIsInCart = cart.find(
-      cartProduct => cartProduct.id === product.id,
-    );
-
-    const newProductToCart: CartProduct = {
-      ...product,
-      productCount,
-    };
-
-    if (!productIsInCart) updateCart(newProductToCart);
-  };
 
   const handleRemoveAllProducts = () => {
     resetCart();
@@ -97,16 +83,25 @@ const Cart: React.FC = () => {
           data={cart}
           contentContainerStyle={styles.productList}
           keyExtractor={item => String(item?.id)}
-          renderItem={({item, index}) => (
-            <ResumeCard
-              index={index}
-              product={item}
-              handleAddProductsToCart={handleAddProductsToCart}
-            />
-          )}
+          renderItem={({item}) => <ResumeCard product={item} />}
           ItemSeparatorComponent={() => <View style={styles.listSeparator} />}
           showsVerticalScrollIndicator={false}
         />
+      </View>
+
+      <View style={styles.totalContainer}>
+        <View style={styles.totalInfo}>
+          <Text style={styles.totalLabel}>Total</Text>
+          <Text style={styles.totalAmount}>$ {cartTotal?.toFixed(2)}</Text>
+        </View>
+
+        <TouchableOpacity activeOpacity={0.7} style={styles.finalizeButton}>
+          <Text style={styles.finalizeButtonText}>Finalize</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity activeOpacity={0.7} style={styles.backToStoreButton}>
+          <Text style={styles.backToStoreButtonText}>Back to store</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
