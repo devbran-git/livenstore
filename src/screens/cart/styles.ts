@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
   },
   productList: {
     marginTop: dynamicHeight(24),
+    paddingBottom: dynamicWidth(300),
   },
   listSeparator: {
     height: dynamicHeight(20),
@@ -101,6 +102,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.smoke,
     paddingTop: dynamicHeight(24),
     paddingBottom: dynamicHeight(40),
+    shadowColor: colors.black,
+    shadowOpacity: 0.1,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    elevation: 2,
   },
   totalInfo: {
     flexDirection: 'row',

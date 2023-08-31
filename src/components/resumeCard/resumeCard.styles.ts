@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 import {dynamicHeight, dynamicWidth} from 'globals/styles/spacing';
-import {bold, medium, regular, semibold} from 'globals/styles/fonts';
+import {medium, regular, semibold} from 'globals/styles/fonts';
 import {colors} from 'globals/styles/colors';
 
 const styles = StyleSheet.create({
