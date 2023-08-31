@@ -25,7 +25,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.black,
   },
-  cartButton: {},
+  cartIndicator: {
+    position: 'absolute',
+    top: -4,
+    right: -4,
+    width: dynamicHeight(8),
+    height: dynamicHeight(8),
+    borderRadius: dynamicHeight(4),
+    backgroundColor: colors.red,
+  },
   productListContainer: {
     flex: 1,
     alignItems: 'center',

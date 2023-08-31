@@ -77,7 +77,9 @@ const ProductModal: React.FC<ProductModalProps> = ({
           </View>
 
           <View style={styles.productPriceContainer}>
-            <Text style={styles.productPrice}>$ {selectedProduct?.price}</Text>
+            <Text style={styles.productPrice}>
+              $ {selectedProduct?.price.toFixed(2)}
+            </Text>
           </View>
         </View>
 
@@ -97,7 +99,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
                 onPress={handleRemoveProduct}>
                 <Trash />
                 <Text style={styles.addRemoveButtonTitle}>
-                  Remover do carrinho
+                  Remove from cart
                 </Text>
               </TouchableOpacity>
             ) : (
@@ -125,9 +127,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
                   style={styles.addRemoveButton}
                   onPress={handleAddProduct}>
                   <AddCart />
-                  <Text style={styles.addRemoveButtonTitle}>
-                    Adicionar ao carrinho
-                  </Text>
+                  <Text style={styles.addRemoveButtonTitle}>Add to cart</Text>
                 </TouchableOpacity>
               </>
             )}
@@ -136,7 +136,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
               activeOpacity={0.7}
               style={styles.closeModalButton}
               onPress={handleCloseModal}>
-              <Text style={styles.closeModalButtonTitle}>Voltar</Text>
+              <Text style={styles.closeModalButtonTitle}>Back</Text>
             </TouchableOpacity>
           </View>
         </View>

@@ -84,7 +84,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             </Text>
           </View>
 
-          <Text style={styles.productPrice}>$ {product.price}</Text>
+          <Text style={styles.productPrice}>$ {product.price.toFixed(2)}</Text>
         </View>
 
         <View style={styles.bottomContent}>
@@ -94,7 +94,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
               style={styles.addRemoveButton}
               onPress={handleRemoveProduct}>
               <Trash />
-              <Text style={styles.addRemoveButtonTitle}>Remover</Text>
+              <Text style={styles.addRemoveButtonTitle}>Remove</Text>
             </TouchableOpacity>
           ) : (
             <>
@@ -122,7 +122,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 style={styles.addRemoveButton}
                 onPress={handleAddProduct}>
                 <AddCart />
-                <Text style={styles.addRemoveButtonTitle}>Adicionar</Text>
+                <Text style={styles.addRemoveButtonTitle}>Add to cart</Text>
               </TouchableOpacity>
             </>
           )}

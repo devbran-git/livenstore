@@ -60,7 +60,7 @@ const Home: React.FC = () => {
   const {navigate} = useNavigation<NavigationProps>();
 
   const {products, isLoading} = useProducts();
-  const {cart, updateCart, removeProductFromCart} = useCart();
+  const {cart, addProductToCart, removeProductFromCart} = useCart();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product>();
@@ -90,7 +90,7 @@ const Home: React.FC = () => {
       productCount,
     };
 
-    if (!productIsInCart) updateCart(newProductToCart);
+    if (!productIsInCart) addProductToCart(newProductToCart);
   };
 
   return (
@@ -100,10 +100,10 @@ const Home: React.FC = () => {
           <View style={styles.ghostView} />
           <Text style={styles.headerTitle}>Liven Store</Text>
 
-          <TouchableOpacity
-            style={styles.cartButton}
-            onPress={handleNavigateToCart}>
+          <TouchableOpacity onPress={handleNavigateToCart}>
             <Cart />
+
+            {cart.length > 0 && <View style={styles.cartIndicator} />}
           </TouchableOpacity>
         </View>
 

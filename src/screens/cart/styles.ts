@@ -1,25 +1,146 @@
 import {colors} from 'globals/styles/colors';
-import {bold} from 'globals/styles/fonts';
-import {dynamicHeight} from 'globals/styles/spacing';
+import {medium, regular, semibold} from 'globals/styles/fonts';
+import {dynamicHeight, dynamicWidth, width} from 'globals/styles/spacing';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: colors.white,
   },
-  title: {
-    fontFamily: bold,
-    color: colors.black,
-    fontSize: dynamicHeight(20),
-  },
-  button: {
+  header: {
+    zIndex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    width: width,
+    paddingHorizontal: dynamicWidth(24),
+    marginTop: dynamicHeight(24),
+  },
+  backButton: {},
+  headerTitle: {
+    fontFamily: medium,
+    fontSize: 16,
+    color: colors.black,
+  },
+  ghostView: {
+    width: 16,
+  },
+  emptyCart: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: dynamicHeight(24),
+    bottom: dynamicHeight(24),
+  },
+  emptyCartMessage: {
+    fontFamily: semibold,
+    fontSize: 16,
+    color: colors.black,
+  },
+  resumeSection: {
     marginTop: dynamicHeight(40),
+    paddingHorizontal: dynamicWidth(24),
+  },
+  resumeSectionHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  resumeSectionTitle: {
+    fontFamily: medium,
+    fontSize: 14,
+    color: colors.black,
+  },
+  confirmToast: {
+    zIndex: 1,
+    position: 'absolute',
+    top: dynamicHeight(24),
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    gap: dynamicHeight(8),
+    width: '100%',
+    height: dynamicHeight(64),
+    paddingHorizontal: dynamicHeight(12),
+    borderRadius: dynamicHeight(4),
+    backgroundColor: '#FFE8E8',
+  },
+  toastMessage: {
+    fontFamily: medium,
+    fontSize: 14,
+    color: colors.black,
+    textAlign: 'center',
+  },
+  toastButtonsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: dynamicWidth(40),
+  },
+  toastButton: {},
+  cancelText: {
+    fontFamily: regular,
+    fontSize: 12,
+    color: colors.black,
+  },
+  confirmText: {
+    fontFamily: semibold,
+    fontSize: 12,
+    color: colors.red,
+  },
+  productList: {
+    marginTop: dynamicHeight(24),
+  },
+  listSeparator: {
+    height: dynamicHeight(20),
+  },
+  totalContainer: {
+    position: 'absolute',
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: width,
+    backgroundColor: colors.smoke,
+    paddingTop: dynamicHeight(24),
+    paddingBottom: dynamicHeight(40),
+  },
+  totalInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: dynamicWidth(8),
+  },
+  totalLabel: {
+    fontFamily: medium,
+    fontSize: 16,
+    color: colors.black,
+  },
+  totalAmount: {
+    fontFamily: semibold,
+    fontSize: 18,
+    color: colors.black,
+  },
+  finalizeButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: dynamicWidth(200),
+    paddingVertical: dynamicHeight(12),
+    paddingHorizontal: dynamicHeight(40),
+    borderWidth: dynamicWidth(2),
+    borderColor: colors.black,
+    borderRadius: dynamicHeight(4),
+    marginTop: dynamicHeight(24),
+    marginBottom: dynamicHeight(16),
+  },
+  finalizeButtonText: {
+    fontFamily: semibold,
+    fontSize: 14,
+    color: colors.black,
+  },
+  backToStoreButton: {},
+  backToStoreButtonText: {
+    fontFamily: regular,
+    fontSize: 14,
+    color: colors.black,
   },
 });
 
