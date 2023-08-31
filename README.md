@@ -1,79 +1,45 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Liven Store
+Aplicação desenvolvida em React Native (CLI), com o objetivo de simular a interação do usuário com um ecommerce, visualizando, adicionando e removendo produtos no carrinho.
 
-# Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Recursos
+### Dados
+Os dados utilizados neste app são da base de dados da [Fake Store API](https://fakestoreapi.com/).
+### Services
+Os services do app foram baseados na bibloteca [axios](https://www.npmjs.com/package/axios).
+### Gerenciamento de estado global
+Para gerenciar o estado global da aplicação, foi utilizada a Context API do React.
+### Estilização
+A estilização do app foi feita com Stylesheet, react-native-svg e fontes da Google Fonts.
+### Versionamento de código
+Foram utilizados Git e Github para gerenciamento de versão de código local e remoto, respectivamente. O fluxo e o pattern utilizados foram o git flow com commits semânticos.
 
-## Step 1: Start the Metro Server
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Processo
+O processo de construção consistiu em planejamento, design e desenvolvimento. Após analisar os critérios do desafio, foi criado um rascunho no [Figma](https://www.figma.com/file/arM2ha1BSLspSWNRuF6ENN/Liven-Store?type=design&node-id=0%3A1&mode=design&t=0Vdcl4VWug38P1bA-1), que serviu como base para o desenvolviemnto das features do app.
 
-To start Metro, run the following command from the _root_ of your React Native project:
 
-```bash
-# using npm
-npm start
+## Ações do usuário
+- Acessar tela de produtos;
+- Ver detalhes do produto;
+- Adicionar ou reemover;
+- Aumentar ou diminuir a quantidade;
+- Acessar à tela de carrinho, com um resumo dos produtos adicionados e o valor total da compra;
+- Finalizar compra, excluir um ou todos os produtos, ou retornar à loja e continar adicionando produtos.
 
-# OR using Yarn
-yarn start
-```
 
-## Step 2: Start your Application
+## Para testar
+É necesário ter instalado Andoroid Studio ou Xcode no computador. As informações para configurar ambiente se encontram no [ink]([url](https://reactnative.dev/docs/environment-setup)https://reactnative.dev/docs/environment-setup).
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+Passos:
+- clonar este repositório para pasta local;
+- abrir o projeto em um editor de código e rodar, na pasta raiz do projeto, o comando `yarn` ou `npm install`, para baixar as bibliotecas necessárias ao funcionamento do app;
+- se o ambiente for macOS, rodar o comando `npx pod-instal ios` também na pasta raiz do projeto;
+- rodar o comando `yarn android` ou `yarn ios`, para rodar o app em emulador android ou ios, respectivamente.
 
-### For Android
 
-```bash
-# using npm
-npm run android
+## Especificações
+- node na versão: ">=16";
+- React Native na versão: "0.72.4";
+- versão do React: "18.2.0".
 
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
