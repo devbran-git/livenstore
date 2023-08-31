@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 import {dynamicHeight, dynamicWidth} from 'globals/styles/spacing';
-import {bold, medium, regular, semibold} from 'globals/styles/fonts';
+import {medium, regular, semibold} from 'globals/styles/fonts';
 import {colors} from 'globals/styles/colors';
 
 const styles = StyleSheet.create({
@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     paddingVertical: dynamicHeight(16),
     paddingHorizontal: dynamicWidth(12),
   },
-  topContent: {},
   productTitle: {
     fontFamily: medium,
     fontSize: 12,

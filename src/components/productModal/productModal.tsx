@@ -1,15 +1,22 @@
-import React, {useState} from 'react';
-import {Image, Modal, Text, TouchableOpacity, View} from 'react-native';
+import React, {memo, useEffect, useState} from 'react';
+import {
+  Image,
+  Modal,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 import {useFocusEffect} from '@react-navigation/native';
 
 import {useCart} from 'hooks/cart/useCart';
 
 import AddCart from 'assets/svg/addCart.svg';
-import Star from 'assets/svg/star.svg';
 import Minus from 'assets/svg/minus.svg';
-import Plus from 'assets/svg/plus.svg';
 import Trash from 'assets/svg/trash.svg';
+import Star from 'assets/svg/star.svg';
+import Plus from 'assets/svg/plus.svg';
 
 import {hitSlop} from 'globals/styles/spacing';
 import styles from './productModal.styles';
@@ -48,6 +55,11 @@ const ProductModal: React.FC<ProductModalProps> = ({
     setProductCount(1);
   };
 
+  const handleLeaveModal = () => {
+    setProductCount(1);
+    handleCloseModal();
+  };
+
   useFocusEffect(() => {
     const identifiedProduct = cart.find(i => i.id === selectedProduct?.id);
 
@@ -55,7 +67,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
   });
 
   return (
-    <Modal transparent visible={isModalOpen} onRequestClose={handleCloseModal}>
+    <Modal transparent visible={isModalOpen} onRequestClose={handleLeaveModal}>
       <View style={styles.modalContent}>
         <View style={styles.imageContainer}>
           <Image
@@ -84,14 +96,16 @@ const ProductModal: React.FC<ProductModalProps> = ({
         </View>
 
         <View style={styles.bottomContent}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.productTitle}>{selectedProduct?.title}</Text>
-            <Text style={styles.productDescription}>
-              {selectedProduct?.description}
-            </Text>
-          </View>
+          <ScrollView>
+            <View style={styles.titleContainer}>
+              <Text style={styles.productTitle}>{selectedProduct?.title}</Text>
+              <Text style={styles.productDescription}>
+                {selectedProduct?.description}
+              </Text>
+            </View>
+          </ScrollView>
 
-          <View style={styles.counterContainer}>
+          <View>
             {productInCart?.id === selectedProduct?.id ? (
               <TouchableOpacity
                 activeOpacity={0.7}
@@ -135,7 +149,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
             <TouchableOpacity
               activeOpacity={0.7}
               style={styles.closeModalButton}
-              onPress={handleCloseModal}>
+              onPress={handleLeaveModal}>
               <Text style={styles.closeModalButtonTitle}>Back</Text>
             </TouchableOpacity>
           </View>
@@ -145,10 +159,10 @@ const ProductModal: React.FC<ProductModalProps> = ({
       <TouchableOpacity
         activeOpacity={0.65}
         style={styles.backdrop}
-        onPress={handleCloseModal}
+        onPress={handleLeaveModal}
       />
     </Modal>
   );
 };
 
-export default ProductModal;
+export default memo(ProductModal);

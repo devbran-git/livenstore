@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: colors.smoke,
   },
-  counterContainer: {},
   counter: {
     flexDirection: 'row',
     alignItems: 'center',

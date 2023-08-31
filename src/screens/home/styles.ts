@@ -1,5 +1,5 @@
 import {colors} from 'globals/styles/colors';
-import {medium} from 'globals/styles/fonts';
+import {bold, medium} from 'globals/styles/fonts';
 import {dynamicHeight, dynamicWidth} from 'globals/styles/spacing';
 import {StyleSheet} from 'react-native';
 
@@ -33,6 +33,24 @@ const styles = StyleSheet.create({
     height: dynamicHeight(8),
     borderRadius: dynamicHeight(4),
     backgroundColor: colors.red,
+  },
+  categoryListContainer: {
+    width: '100%',
+    marginTop: dynamicHeight(24),
+    paddingBottom: dynamicHeight(8),
+  },
+  categoryList: {
+    flexGrow: 1,
+    paddingHorizontal: dynamicWidth(24),
+    gap: dynamicWidth(40),
+  },
+  categoryLabel: {
+    fontFamily: medium,
+    fontSize: 16,
+    color: colors.black,
+  },
+  boldCategory: {
+    fontFamily: bold,
   },
   productListContainer: {
     flex: 1,

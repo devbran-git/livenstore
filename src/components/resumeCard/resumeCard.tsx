@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 
 import {useCart} from 'hooks/cart/useCart';
@@ -60,7 +60,7 @@ const ResumeCard: React.FC<ResumeCardProps> = ({product}) => {
       </View>
 
       <View style={styles.contentInfo}>
-        <View style={styles.topContent}>
+        <View>
           <Text style={styles.productTitle} numberOfLines={2}>
             {product?.title}
           </Text>
@@ -115,4 +115,4 @@ const ResumeCard: React.FC<ResumeCardProps> = ({product}) => {
   );
 };
 
-export default ResumeCard;
+export default memo(ResumeCard);

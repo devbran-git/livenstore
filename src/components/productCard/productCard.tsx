@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 
 import {useCart} from 'hooks/cart/useCart';
 
 import AddCart from 'assets/svg/addCart.svg';
-import Star from 'assets/svg/star.svg';
 import Minus from 'assets/svg/minus.svg';
-import Plus from 'assets/svg/plus.svg';
 import Trash from 'assets/svg/trash.svg';
+import Star from 'assets/svg/star.svg';
+import Plus from 'assets/svg/plus.svg';
 
 import {hitSlop} from 'globals/styles/spacing';
 import styles from './productCard.styles';
@@ -87,7 +87,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <Text style={styles.productPrice}>$ {product.price.toFixed(2)}</Text>
         </View>
 
-        <View style={styles.bottomContent}>
+        <View>
           {productInCart?.id === product.id ? (
             <TouchableOpacity
               activeOpacity={0.7}
@@ -132,4 +132,4 @@ const ProductCard: React.FC<ProductCardProps> = ({
   );
 };
 
-export default ProductCard;
+export default memo(ProductCard);

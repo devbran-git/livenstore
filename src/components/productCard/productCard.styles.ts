@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
     marginTop: dynamicHeight(12),
     color: colors.black,
   },
-  bottomContent: {},
   counter: {
     flexDirection: 'row',
     alignItems: 'center',
