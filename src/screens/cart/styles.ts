@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: dynamicWidth(24),
     marginTop: dynamicHeight(24),
   },
-  backButton: {},
   headerTitle: {
     fontFamily: medium,
     fontSize: 16,
@@ -77,7 +76,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: dynamicWidth(40),
   },
-  toastButton: {},
   cancelText: {
     fontFamily: regular,
     fontSize: 12,
@@ -136,7 +134,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: colors.black,
   },
-  backToStoreButton: {},
   backToStoreButtonText: {
     fontFamily: regular,
     fontSize: 14,

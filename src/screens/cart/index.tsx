@@ -10,8 +10,8 @@ import {useNavigation} from '@react-navigation/native';
 
 import ResumeCard from 'components/resumeCard/resumeCard';
 import ArrowBack from 'assets/svg/arrowBack.svg';
-import Trash from 'assets/svg/trash.svg';
 import EmptyIcon from 'assets/svg/emptyCart.svg';
+import Trash from 'assets/svg/trash.svg';
 
 import {useCart} from 'hooks/cart/useCart';
 
@@ -43,7 +43,6 @@ const Cart: React.FC = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity
-          style={styles.backButton}
           activeOpacity={0.7}
           hitSlop={hitSlop}
           onPress={handleNavigateToHome}>
@@ -74,15 +73,11 @@ const Cart: React.FC = () => {
                 </Text>
 
                 <View style={styles.toastButtonsContainer}>
-                  <TouchableOpacity
-                    style={styles.toastButton}
-                    onPress={() => setIsToastVisible(false)}>
+                  <TouchableOpacity onPress={() => setIsToastVisible(false)}>
                     <Text style={styles.cancelText}>Cancel</Text>
                   </TouchableOpacity>
 
-                  <TouchableOpacity
-                    style={styles.toastButton}
-                    onPress={handleRemoveAllProducts}>
+                  <TouchableOpacity onPress={handleRemoveAllProducts}>
                     <Text style={styles.confirmText}>Remove</Text>
                   </TouchableOpacity>
                 </View>
@@ -116,7 +111,6 @@ const Cart: React.FC = () => {
 
             <TouchableOpacity
               activeOpacity={0.7}
-              style={styles.backToStoreButton}
               onPress={handleNavigateToHome}>
               <Text style={styles.backToStoreButtonText}>Back to store</Text>
             </TouchableOpacity>
@@ -125,11 +119,8 @@ const Cart: React.FC = () => {
       ) : (
         <View style={styles.emptyCart}>
           <EmptyIcon width={280} height={280} />
-          <Text style={styles.emptyCartMessage}>Your cart is still empty.</Text>
-          <TouchableOpacity
-            activeOpacity={0.7}
-            style={styles.backToStoreButton}
-            onPress={handleNavigateToHome}>
+          <Text style={styles.emptyCartMessage}>Your cart is empty.</Text>
+          <TouchableOpacity activeOpacity={0.7} onPress={handleNavigateToHome}>
             <Text style={styles.backToStoreButtonText}>Back to store</Text>
           </TouchableOpacity>
         </View>

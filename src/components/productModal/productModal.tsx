@@ -6,10 +6,10 @@ import {useFocusEffect} from '@react-navigation/native';
 import {useCart} from 'hooks/cart/useCart';
 
 import AddCart from 'assets/svg/addCart.svg';
-import Star from 'assets/svg/star.svg';
 import Minus from 'assets/svg/minus.svg';
-import Plus from 'assets/svg/plus.svg';
 import Trash from 'assets/svg/trash.svg';
+import Star from 'assets/svg/star.svg';
+import Plus from 'assets/svg/plus.svg';
 
 import {hitSlop} from 'globals/styles/spacing';
 import styles from './productModal.styles';
@@ -91,7 +91,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
             </Text>
           </View>
 
-          <View style={styles.counterContainer}>
+          <View>
             {productInCart?.id === selectedProduct?.id ? (
               <TouchableOpacity
                 activeOpacity={0.7}

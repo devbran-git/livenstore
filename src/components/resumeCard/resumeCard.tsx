@@ -60,7 +60,7 @@ const ResumeCard: React.FC<ResumeCardProps> = ({product}) => {
       </View>
 
       <View style={styles.contentInfo}>
-        <View style={styles.topContent}>
+        <View>
           <Text style={styles.productTitle} numberOfLines={2}>
             {product?.title}
           </Text>

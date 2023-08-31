@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     paddingVertical: dynamicHeight(16),
     paddingHorizontal: dynamicWidth(12),
   },
-  topContent: {},
   productTitle: {
     fontFamily: medium,
     fontSize: 12,
