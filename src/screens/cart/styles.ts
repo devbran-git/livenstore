@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   header: {
+    zIndex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -24,6 +25,18 @@ const styles = StyleSheet.create({
   },
   ghostView: {
     width: 16,
+  },
+  emptyCart: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: dynamicHeight(24),
+    bottom: dynamicHeight(24),
+  },
+  emptyCartMessage: {
+    fontFamily: semibold,
+    fontSize: 16,
+    color: colors.black,
   },
   resumeSection: {
     marginTop: dynamicHeight(40),
