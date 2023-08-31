@@ -1,6 +1,9 @@
+
 # Liven Store
 Aplicação desenvolvida em React Native (CLI), com o objetivo de simular a interação do usuário com um ecommerce, visualizando, adicionando e removendo produtos no carrinho.
 
+## Preview
+https://github.com/devbran-git/livenstore/assets/72209584/017fb587-25e1-4b38-9e40-f425cd573c0d
 
 ## Recursos
 ### Dados
