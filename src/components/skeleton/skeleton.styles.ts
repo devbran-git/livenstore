@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 8,
     flexWrap: 'wrap',
-    marginTop: dynamicHeight(24),
+    marginTop: dynamicHeight(32),
   },
   block: {
     backgroundColor: colors.smoke,

@@ -34,7 +34,7 @@ const Home: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product>();
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [productsToDisplay, setProductsToDisplay] = useState<Product[]>();
+  const [productsToDisplay, setProductsToDisplay] = useState<Product[]>([]);
 
   const categories = [
     {categoryId: 'all', name: 'All categories'},
@@ -103,8 +103,8 @@ const Home: React.FC = () => {
   };
 
   useEffect(() => {
-    setProductsToDisplay(allProducts);
-  }, []);
+    if (products.length) setProductsToDisplay(products);
+  }, [products]);
 
   return (
     <>
