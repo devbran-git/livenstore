@@ -21,13 +21,18 @@ import {NavigationProps} from 'navigator/routes.types';
 import {hitSlop} from 'globals/styles/spacing';
 
 const Cart: React.FC = () => {
-  const {goBack} = useNavigation<NavigationProps>();
+  const {goBack, navigate} = useNavigation<NavigationProps>();
 
   const {cart, cartTotal, resetCart} = useCart();
 
   const [isToastVisible, setIsToastVisible] = useState(false);
 
   const handleNavigateToHome = () => goBack();
+
+  const handleFinalize = () => {
+    navigate('Success');
+    resetCart();
+  };
 
   const handleRemoveAllProducts = () => {
     resetCart();
@@ -102,7 +107,10 @@ const Cart: React.FC = () => {
               <Text style={styles.totalAmount}>$ {cartTotal?.toFixed(2)}</Text>
             </View>
 
-            <TouchableOpacity activeOpacity={0.7} style={styles.finalizeButton}>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              style={styles.finalizeButton}
+              onPress={handleFinalize}>
               <Text style={styles.finalizeButtonText}>Finalize</Text>
             </TouchableOpacity>
 
