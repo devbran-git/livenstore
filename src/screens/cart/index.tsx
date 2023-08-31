@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
+import {
+  FlatList,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from 'navigator/routes.types';
@@ -9,15 +15,31 @@ import Trash from 'assets/svg/trash.svg';
 
 import styles from './styles';
 import {useCart} from 'hooks/cart/useCart';
+import ResumeCard from 'components/resumeCard/resumeCard';
+import {Product} from 'hooks/products/products.types';
+import {CartProduct} from 'hooks/cart/cart.types';
 
 const Cart: React.FC = () => {
   const {goBack} = useNavigation<NavigationProps>();
 
-  const {resetCart} = useCart();
+  const {cart, resetCart, updateCart} = useCart();
 
   const [isToastVisible, setIsToastVisible] = useState(false);
 
   const handleNavigateToHome = () => goBack();
+
+  const handleAddProductsToCart = (product: Product, productCount: number) => {
+    const productIsInCart = cart.find(
+      cartProduct => cartProduct.id === product.id,
+    );
+
+    const newProductToCart: CartProduct = {
+      ...product,
+      productCount,
+    };
+
+    if (!productIsInCart) updateCart(newProductToCart);
+  };
 
   const handleRemoveAllProducts = () => {
     resetCart();
@@ -70,6 +92,21 @@ const Cart: React.FC = () => {
             </View>
           </View>
         )}
+
+        <FlatList
+          data={cart}
+          contentContainerStyle={styles.productList}
+          keyExtractor={item => String(item?.id)}
+          renderItem={({item, index}) => (
+            <ResumeCard
+              index={index}
+              product={item}
+              handleAddProductsToCart={handleAddProductsToCart}
+            />
+          )}
+          ItemSeparatorComponent={() => <View style={styles.listSeparator} />}
+          showsVerticalScrollIndicator={false}
+        />
       </View>
     </SafeAreaView>
   );

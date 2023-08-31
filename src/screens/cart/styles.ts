@@ -1,5 +1,5 @@
 import {colors} from 'globals/styles/colors';
-import {bold, medium, regular, semibold} from 'globals/styles/fonts';
+import {medium, regular, semibold} from 'globals/styles/fonts';
 import {dynamicHeight, dynamicWidth, width} from 'globals/styles/spacing';
 import {StyleSheet} from 'react-native';
 
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontFamily: medium,
     fontSize: 16,
+    color: colors.black,
   },
   ghostView: {
     width: 16,
@@ -36,6 +37,7 @@ const styles = StyleSheet.create({
   resumeSectionTitle: {
     fontFamily: medium,
     fontSize: 14,
+    color: colors.black,
   },
   confirmToast: {
     position: 'absolute',
@@ -53,6 +55,7 @@ const styles = StyleSheet.create({
   toastMessage: {
     fontFamily: medium,
     fontSize: 14,
+    color: colors.black,
     textAlign: 'center',
   },
   toastButtonsContainer: {
@@ -70,6 +73,12 @@ const styles = StyleSheet.create({
     fontFamily: semibold,
     fontSize: 12,
     color: colors.red,
+  },
+  productList: {
+    marginTop: dynamicHeight(24),
+  },
+  listSeparator: {
+    height: dynamicHeight(20),
   },
 });
 

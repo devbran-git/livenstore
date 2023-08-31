@@ -77,7 +77,9 @@ const ProductModal: React.FC<ProductModalProps> = ({
           </View>
 
           <View style={styles.productPriceContainer}>
-            <Text style={styles.productPrice}>$ {selectedProduct?.price}</Text>
+            <Text style={styles.productPrice}>
+              $ {selectedProduct?.price.toFixed(2)}
+            </Text>
           </View>
         </View>
 

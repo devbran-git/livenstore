@@ -84,7 +84,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             </Text>
           </View>
 
-          <Text style={styles.productPrice}>$ {product.price}</Text>
+          <Text style={styles.productPrice}>$ {product.price.toFixed(2)}</Text>
         </View>
 
         <View style={styles.bottomContent}>

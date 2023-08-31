@@ -100,10 +100,10 @@ const Home: React.FC = () => {
           <View style={styles.ghostView} />
           <Text style={styles.headerTitle}>Liven Store</Text>
 
-          <TouchableOpacity
-            style={styles.cartButton}
-            onPress={handleNavigateToCart}>
+          <TouchableOpacity onPress={handleNavigateToCart}>
             <Cart />
+
+            {cart.length > 0 && <View style={styles.cartIndicator} />}
           </TouchableOpacity>
         </View>
 
