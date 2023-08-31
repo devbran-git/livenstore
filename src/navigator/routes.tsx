@@ -7,6 +7,7 @@ import {
 import Cart from 'screens/cart';
 import Home from 'screens/home';
 import {StackTypesList} from './routes.types';
+import Success from 'screens/success';
 
 const Stack = createStackNavigator<StackTypesList>();
 
@@ -23,6 +24,7 @@ const MainStack = () => {
     <Stack.Navigator>
       <Stack.Screen name="Home" component={Home} {...optionsDefault} />
       <Stack.Screen name="Cart" component={Cart} {...optionsDefault} />
+      <Stack.Screen name="Success" component={Success} {...optionsDefault} />
     </Stack.Navigator>
   );
 };
