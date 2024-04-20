@@ -19,7 +19,7 @@ Foram utilizados Git e Github para gerenciamento de versão de código local e r
 
 
 ## Processo
-O processo de construção consistiu em planejamento, design e desenvolvimento. Após analisar os critérios do desafio, foi criado um rascunho no [Figma](https://www.figma.com/file/arM2ha1BSLspSWNRuF6ENN/Liven-Store?type=design&node-id=0%3A1&mode=design&t=0Vdcl4VWug38P1bA-1), que serviu como base para o desenvolviemnto das features do app.
+O processo de construção consistiu em planejamento, design e desenvolvimento. Após analisar os critérios do desafio, foi criado um rascunho no [Figma](https://www.figma.com/file/arM2ha1BSLspSWNRuF6ENN/Liven-Store?type=design&node-id=0%3A1&mode=design&t=0Vdcl4VWug38P1bA-1), que serviu como base para o desenvolvimento das features do app.
 
 
 ## Ações do usuário
